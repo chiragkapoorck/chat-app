@@ -53,8 +53,10 @@ io.on('connection', (socket) => {
         }
 
         const user = getUser(socket.id)
-        io.to(user.room).emit('message', generateMessage(user.username, message))
-        callback()
+        if (user) {
+            io.to(user.room).emit('message', generateMessage(user.username, message))
+        }
+        callback({error: 'user not found'})
     })
 
     // disconnection event

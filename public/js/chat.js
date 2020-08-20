@@ -96,6 +96,7 @@ $messageForm.addEventListener('submit', (e) => {
 
         if(error) {
             return console.log(error)
+            location.href= '/'
         }
         console.log('Message Delivered.')
     })
